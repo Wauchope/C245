@@ -27,7 +27,7 @@ public class VowelChecker {
     {
         for (char vowel : VOWELS)
         {
-            if (vowel == character) return true;
+            if (vowel == Character.toLowerCase(character)) return true;
         }
 
         return false;
