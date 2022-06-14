@@ -1,21 +1,29 @@
 package Day1;
 
+import static Other.Helper.ReadInt;
+
 public class HurlingScore
 {
     public static void main(String[] args)
     {
-        int homeGoals = 3, homePoints = 10, awayGoals = 3, awayPoints = 9;
+
+        int homeGoals = ReadInt("Please enter the Home team's goals:");
+        int homePoints = ReadInt("Please enter the Home team's points:");
+        int awayGoals = ReadInt("Please enter the Away team's goals:");
+        int awayPoints = ReadInt("Please enter the Away team's points:");
 
         int homeTotal = CalculateTotal(homeGoals, homePoints);
         int awayTotal = CalculateTotal(awayGoals, awayPoints);
 
+        System.out.println("Home team scores " + homeTotal);
+        System.out.println("Away team scores " + awayTotal);
+
         int margin = CalculateMargin(homeTotal, awayTotal);
 
-        String outputStatement = DetermineWinner(homeTotal, awayTotal) + //Get the winner
+        String outputStatement = DetermineWinner(homeTotal, awayTotal) + //Get the winner and
                 ((margin > 0)?String.format(" by a margin of %o", margin):""); //If the margin in scores is greater than 0 then state the margin
 
         System.out.println(outputStatement);
-
     }
 
     /**
