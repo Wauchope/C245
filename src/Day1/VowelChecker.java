@@ -23,24 +23,20 @@ public class VowelChecker {
 
     }
 
-    private static boolean IsCharVowel(char character)
-    {
-        for (char vowel : VOWELS)
-        {
+    private static boolean IsCharVowel(char character) {
+        for (char vowel : VOWELS) {
             if (vowel == Character.toLowerCase(character)) return true;
         }
 
         return false;
     }
 
-    private static boolean IsFirstCharacterOfStringVowel(String textToCheck)
-    {
+    private static boolean IsFirstCharacterOfStringVowel(String textToCheck) {
         char firstChar = textToCheck.toLowerCase(Locale.ROOT).charAt(0);
         return IsCharVowel(firstChar);
     }
 
-    private static boolean IsCharacterAtIndexOfStringVowel(String textToCheck, int index)
-    {
+    private static boolean IsCharacterAtIndexOfStringVowel(String textToCheck, int index) {
         if (index < 0 || index >= textToCheck.length()) {
             System.out.println("There is no character at this index. Returning false.");
             return false;

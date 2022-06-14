@@ -16,8 +16,7 @@ public class ChangeCalculator {
         int remainder = money;
 
         //Loop through all currency values.
-        for (int i = 0; i < currencyValues.length; i++)
-        {
+        for (int i = 0; i < currencyValues.length; i++) {
             //Floor division as both numbers are integers
             //Get the count of each note or coin fit whole into the remaining amount of money
             changeCount[i] = remainder / currencyValues[i];
@@ -32,13 +31,10 @@ public class ChangeCalculator {
             if (changeCount[i] == 0) continue;
 
             //If we're talking about currency greater than or equal to £1
-            if (currencyValues[i] >= 100)
-            {
+            if (currencyValues[i] >= 100) {
                 //Format the output accordingly
                 System.out.println("£" + (currencyValues[i] / 100) + ": " + changeCount[i]);
-            }
-            else
-            {
+            } else {
                 //Format the output accordingly
                 System.out.println(currencyValues[i] + "p: " + changeCount[i]);
             }
