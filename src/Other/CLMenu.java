@@ -23,7 +23,9 @@ public class CLMenu {
         this.methods = methods;
     }
 
-    //Starts the loop which runs the CLMenu. Takes control of the program.
+    /**
+     * Starts the loop which runs the CLMenu. Takes control of the program.
+     */
     public void StartMenu()
     {
         int choice;
