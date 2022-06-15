@@ -1,7 +1,5 @@
 package Other;
 
-import java.util.function.Function;
-
 import static Other.Helper.ReadInt;
 
 public class CLMenu {
@@ -38,7 +36,7 @@ public class CLMenu {
 
             //Get user input and ensure its in the correct range
             do {
-                choice = ReadInt("Please select an option: ", "Please enter a number between 1 and " + options.length + ":");
+                choice = ReadInt("Please select an option: ", "Please enter a number between 1 and " + (options.length + 1) + ":");
             } while (choice < 1 || choice > options.length + 1);
 
             //As long as we're not trying to exit
