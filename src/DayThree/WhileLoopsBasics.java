@@ -11,6 +11,11 @@ public class WhileLoopsBasics {
         Menu();
     }
 
+    /**
+     * Prints out every number between start (inclusive) and end (inclusive)
+     * @param start The start point for the while loop
+     * @param end The end point for the while loop
+     */
     public static void AllNumbersInclusive(int start, int end)
     {
         while (start <= end) {
@@ -19,18 +24,32 @@ public class WhileLoopsBasics {
         }
     }
 
+    /**
+     * Prints out all odd numbers in a given range in descending order.
+     * @param start The start point of the while loop
+     * @param end The end point of the while loop
+     */
     public static void OddNumbersInRangeDescending(int start, int end)
     {
+        //If we start on an even number, just take away 1. It's the first number in the range
         if (start % 2 == 0)
             start--;
 
         while (start >= end)
         {
             System.out.println(start);
+            //As all odd numbers are 2 apart, we can decrement by 2 instead of 1 as a sligh optimization
+            //This means we're only iterating across half the range (as thats all we need)
             start -= 2;
         }
     }
 
+    /**
+     * Prints all multiples of a particular number within a given range
+     * @param start The start point of the loop
+     * @param end The end point of the loop
+     * @param divisor The number to check against. Prints all multiples of this number
+     */
     public static void GetMultiples(int start, int end, int divisor)
     {
         while (start < end)
@@ -43,6 +62,12 @@ public class WhileLoopsBasics {
         }
     }
 
+    /**
+     * Prints all multiples of all numbers within a given range. If a number is a multiple of two or more divisors it'll print more than once.
+     * @param start The start point of the loop
+     * @param end The end point of the loop
+     * @param divisors The numbers to check against. Prints all multiples of these numbers
+     */
     public static void GetMultiples(int start, int end, int[] divisors)
     {
         while (start <= end)
@@ -63,11 +88,21 @@ public class WhileLoopsBasics {
         }
     }
 
+    /**
+     * Prints all multiples of the LCM of multiple numbers within a given range.
+     * @param start The start point of the loop
+     * @param end The end point of the loop
+     * @param divisors The numbers to check against. Prints all multiples of the LCM of these numbers
+     */
     public static void GetMultiplesOfAllDivisors(int start, int end, int[] divisors)
     {
         GetMultiples(start, end, LowestCommonMultiple(divisors));
     }
 
+    /**
+     * Requests two inputs from the user and prints all numbers within the two numbers given.
+     * Constraint: The second number entered must be larger than the first.
+     */
     public static void AllNumbersInclusiveFromInput()
     {
         int start = ReadInt("Please enter an integer:");
@@ -79,6 +114,10 @@ public class WhileLoopsBasics {
         AllNumbersInclusive(start, end);
     }
 
+    /**
+     * Takes a string and prints, on a new line, each character in that string.
+     * @param input The string to dissect
+     */
     public static void AllCharactersInString(String input)
     {
         int index = 0;
@@ -89,6 +128,9 @@ public class WhileLoopsBasics {
         }
     }
 
+    /**
+     * Allows the program to be run through use of a CLI menu.
+     */
     public static void Menu() {
         Scanner in = new Scanner(System.in);
         int input;
@@ -102,6 +144,14 @@ public class WhileLoopsBasics {
             System.out.println("7: Exit");
 
             input = ReadInt("Please select an option from the list above:");
+
+            /*
+            Each case takes the form:
+            Tell the user what they selected
+            (optionally) Gather required information
+            Perform that action
+            Wait for them to press enter to continue
+             */
 
             switch (input) {
                 case 1 -> {
