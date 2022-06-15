@@ -1,4 +1,4 @@
-package Day1;
+package DayTwo;
 
 import java.util.Locale;
 import java.util.Scanner;

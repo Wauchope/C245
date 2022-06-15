@@ -1,4 +1,4 @@
-package Day1;
+package DayTwo;
 
 import static Other.Helper.ReadInt;
 
