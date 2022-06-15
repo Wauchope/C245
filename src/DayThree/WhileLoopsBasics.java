@@ -181,13 +181,16 @@ public class WhileLoopsBasics {
                     String name = in.next();
                     AllCharactersInString(name);
                 }
+                case 7 -> {
+                    System.out.println("Thank you for using this program. Goodbye");
+
+                    System.exit(0);
+                }
                 default -> {
                 }
             }
             EnterToContinue();
-        } while (input != 7);
-
-        System.out.println("Thank you for using this program. Goodbye");
+        } while (true);
     }
 
 }
