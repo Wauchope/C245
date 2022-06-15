@@ -36,7 +36,7 @@ public class CLMenu {
             //As long as we're not trying to exit
             if (choice != options.length + 1) {
                 //Run the relevant method
-                methods[choice].run();
+                methods[choice-1].run();
             }
         }
         while(choice != options.length+1);

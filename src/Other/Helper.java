@@ -140,6 +140,8 @@ public class Helper {
      */
     public static <T extends Enum<?>> T GetRandomFromEnum(Class<T> myClass)
     {
+        CreateRandomIfNull();
+
         int x = random.nextInt(myClass.getEnumConstants().length);
         return myClass.getEnumConstants()[x];
     }
