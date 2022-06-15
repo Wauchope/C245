@@ -157,39 +157,34 @@ public class WhileLoopsBasics {
                 case 1 -> {
                     System.out.println("1: Print all numbers between 10 and 25 inclusively");
                     AllNumbersInclusive(10, 25);
-                    EnterToContinue();
                 }
                 case 2 -> {
                     System.out.println("2: Print all odd nubmers between 25 and -11 in descending order");
                     OddNumbersInRangeDescending(25, -11);
-                    EnterToContinue();
                 }
                 case 3 -> {
                     System.out.println("3: Print all numbers divisible by 6 between 10 and 45");
                     GetMultiples(10, 45, 6);
-                    EnterToContinue();
                 }
                 case 4 -> {
                     System.out.println("4: Print all numbers divisible by 6 AND 4 between 10 and 45");
                     System.out.println("Lowest common multiple is 12.");
                     GetMultiplesOfAllDivisors(10, 45, new int[]{6, 4});
-                    EnterToContinue();
                 }
                 case 5 -> {
                     System.out.println("5: Ask the user to input a lower number and higher number. Loop from lower to higher.");
                     AllNumbersInclusiveFromInput();
-                    EnterToContinue();
                 }
                 case 6 -> {
                     System.out.println("6: Print all letters in name");
                     System.out.println("Please enter your name: ");
                     String name = in.next();
                     AllCharactersInString(name);
-                    EnterToContinue();
                 }
                 default -> {
                 }
             }
+            EnterToContinue();
         } while (input != 7);
 
         System.out.println("Thank you for using this program. Goodbye");
