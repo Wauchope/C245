@@ -10,7 +10,7 @@ public class CLMenu {
      * Create the CLMenu object.
      * The length of options and methods must be equal.
      * @param options A string array describing what each option will do
-     * @param methods An array of Runnables which contain the functionality to START each method above.
+     * @param methods An array of Runnables which contain the functionality to START each option above.
      */
     public CLMenu(String[] options, Runnable[] methods)
     {
