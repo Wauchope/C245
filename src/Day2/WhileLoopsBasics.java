@@ -3,7 +3,8 @@ package Day2;
 import java.util.Scanner;
 
 import static Other.ExtraMaths.LowestCommonMultiple;
-import static Other.Helper.*;
+import static Other.Helper.EnterToContinue;
+import static Other.Helper.ReadInt;
 
 public class WhileLoopsBasics {
     public static void main(String[] args) {
@@ -30,6 +31,18 @@ public class WhileLoopsBasics {
         }
     }
 
+    public static void GetMultiples(int start, int end, int divisor)
+    {
+        while (start < end)
+        {
+            if (start % divisor == 0)
+            {
+                System.out.println(start + " is a multiple of " + divisor);
+            }
+            start++;
+        }
+    }
+
     public static void GetMultiples(int start, int end, int[] divisors)
     {
         while (start <= end)
@@ -52,7 +65,7 @@ public class WhileLoopsBasics {
 
     public static void GetMultiplesOfAllDivisors(int start, int end, int[] divisors)
     {
-        GetMultiples(start, end, new int[]{LowestCommonMultiple(divisors[0], divisors[1])});
+        GetMultiples(start, end, LowestCommonMultiple(divisors));
     }
 
     public static void AllNumbersInclusiveFromInput()
@@ -76,18 +89,18 @@ public class WhileLoopsBasics {
         }
     }
 
-    public static void Menu()
-    {
+    public static void Menu() {
         Scanner in = new Scanner(System.in);
         int input;
         do {
             System.out.println("1: Print all numbers between 10 and 25 inclusively");
             System.out.println("2: Print all odd nubmers between 25 and -11 in descending order");
-            System.out.println("3: Print all numbers divisible by 6 and 4 between 10 and 45");
+            System.out.println("3: Print all numbers divisible by 6 between 10 and 45");
             System.out.println("4: Print all numbers divisible by 6 and 4 between 10 and 45");
             System.out.println("5: Ask the user to input a lower number and higher number. Loop from lower to higher.");
             System.out.println("6: Print all letters in name");
             System.out.println("7: Exit");
+
             input = ReadInt("Please select an option from the list above:");
 
             switch (input) {
@@ -103,11 +116,12 @@ public class WhileLoopsBasics {
                 }
                 case 3 -> {
                     System.out.println("3: Print all numbers divisible by 6 between 10 and 45");
-                    GetMultiples(10, 45, new int[]{6});
+                    GetMultiples(10, 45, 6);
                     EnterToContinue();
                 }
                 case 4 -> {
                     System.out.println("4: Print all numbers divisible by 6 AND 4 between 10 and 45");
+                    System.out.println("Lowest common multiple is 12.");
                     GetMultiplesOfAllDivisors(10, 45, new int[]{6, 4});
                     EnterToContinue();
                 }
