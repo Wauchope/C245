@@ -7,7 +7,6 @@ public class Helper {
 
     /**
      * Reads a value from default System.in and returns it so long as the value entered is an integer
-     *
      * @param prompt       The prompt to display to the user
      * @param errorMessage The error message to display in the case of invalid input
      * @return The integer input by the user
@@ -67,10 +66,47 @@ public class Helper {
     }
 
     /**
+     * Reads a value from default System.in and returns it so long as the value entered is an integer AND it is positive
+     * @param prompt       The prompt to display to the user
+     * @param errorMessage The error message to display in the case of invalid input
+     * @return The integer input by the user
+     */
+    public static int ReadPosInt(String prompt, String errorMessage) {
+        int value;
+        do {
+            value = ReadInt(prompt, errorMessage);
+        } while (value < 0);
+        return value;
+    }
+
+    /**
+     * Reads a value from default System.in and returns it so long as the value entered is an integer AND it is positive
+     * The error message to display in the case of invalid input is
+     * "Error: The value you've entered is incorrect. Please enter a valid positive integer."
+     * @param prompt       The prompt to display to the user
+     * @return The integer input by the user
+     */
+    public static int ReadPosInt(String prompt) {
+        return ReadPosInt(prompt, "Error: The value you've entered is incorrect. Please enter a valid positive integer.");
+    }
+
+    /**
+     * Reads a value from default System.in and returns it so long as the value entered is an integer AND it is positive
+     * The prompt to display to the user is
+     * "Please enter a positive integer:"
+     * The error message to display in the case of invalid input is
+     * "Error: The value you've entered is incorrect. Please enter a valid positive integer."
+     * @return The integer input by the user
+     */
+    public static int ReadPosInt() {
+        return ReadPosInt("Please enter a positive integer:");
+    }
+    /**
      * Initializes the scanner object "in" with a new Scanner if it does not already exist
      */
     private static void CreateScannerIfNull() {
-        if (in == null)
-            in = new Scanner(System.in);
+        if (in != null) return;
+
+        in = new Scanner(System.in);
     }
 }
