@@ -109,4 +109,15 @@ public class Helper {
 
         in = new Scanner(System.in);
     }
+
+    /**
+     * Allows you to force the user to press enter to continue
+     */
+    public static void EnterToContinue()
+    {
+        System.out.println("Press enter to continue...");
+        in.nextLine();
+        in.nextLine();
+    }
+
 }
