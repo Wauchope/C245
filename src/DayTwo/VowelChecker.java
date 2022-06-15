@@ -23,6 +23,11 @@ public class VowelChecker {
 
     }
 
+    /**
+     * Takes a character and returns true if the character is a vowel, or false otherwise
+     * @param character The character to check
+     * @return True or false dependent on the input character
+     */
     private static boolean IsCharVowel(char character) {
         for (char vowel : VOWELS) {
             if (vowel == Character.toLowerCase(character)) return true;
@@ -31,11 +36,23 @@ public class VowelChecker {
         return false;
     }
 
+    /**
+     * Takes a string and checks if the first character is a vowel
+     * @param textToCheck The string to check
+     * @return True or false dependent on the input string
+     */
     private static boolean IsFirstCharacterOfStringVowel(String textToCheck) {
         char firstChar = textToCheck.toLowerCase(Locale.ROOT).charAt(0);
         return IsCharVowel(firstChar);
     }
 
+    /**
+     * Takes an input string and a position and checks whether the character at this position is a vowel.
+     * If there is no character at that position (index out of range) returns false.
+     * @param textToCheck The string to check
+     * @param index The position to check
+     * @return True (if the character at position index is a vowel), false otherwise
+     */
     private static boolean IsCharacterAtIndexOfStringVowel(String textToCheck, int index) {
         if (index < 0 || index >= textToCheck.length()) {
             System.out.println("There is no character at this index. Returning false.");
