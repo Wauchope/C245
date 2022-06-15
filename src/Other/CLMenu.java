@@ -7,6 +7,13 @@ import static Other.Helper.ReadInt;
 public class CLMenu {
     String[] options;
     Runnable[] methods;
+
+    /**
+     * Create the CLMenu object.
+     * The length of options and methods must be equal.
+     * @param options A string array describing what each option will do
+     * @param methods An array of Runnables which contain the functionality to START each method above.
+     */
     public CLMenu(String[] options, Runnable[] methods)
     {
         if (options.length != methods.length)
@@ -18,6 +25,7 @@ public class CLMenu {
         this.methods = methods;
     }
 
+    //Starts the loop which runs the CLMenu. Takes control of the program.
     public void StartMenu()
     {
         int choice;
