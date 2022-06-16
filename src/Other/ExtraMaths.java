@@ -1,5 +1,10 @@
 package Other;
 
+/**
+ * An class with some random functions needed for various exercises and problems.
+ * They get stored here for later use or reference.
+ * @author Jordan Luke Wauchope
+ */
 public class ExtraMaths {
     /**
      * Takes an array of integers and returns the lowest common multiple of all numbers

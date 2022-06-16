@@ -3,6 +3,14 @@ package Other;
 import java.util.Random;
 import java.util.Scanner;
 
+/**
+ * A collection of unorganised methods which tend to be used repeatedly throughout my code,
+ * such as pressing enter to continue or reading an integer.
+ *
+ * Please note that any code in this file is planned to be moved into a more aptly named file in the future.
+ * Be careful when updating this package.
+ * @author Jordan Luke Wauchope
+ */
 public class Helper {
     static Scanner in;
     //Could probably introduce some kind of noise function but for the purpose of this course I don't think I need to

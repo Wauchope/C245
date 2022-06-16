@@ -2,6 +2,11 @@ package Other;
 
 import static Other.Helper.ReadInt;
 
+/**
+ * A class for implementing a simple command line interface.
+ * Allows you to use an array of Runnables, along with an array of descriptions of equal length to use within the menu
+ * @author Jordan Luke Wauchope
+ */
 public class CLMenu {
     String[] options;
     Runnable[] methods;
