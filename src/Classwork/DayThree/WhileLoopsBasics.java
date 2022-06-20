@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 import static Other.ExtraMaths.LowestCommonMultiple;
 import static Other.Helper.EnterToContinue;
-import static Other.Helper.ReadInt;
+import static Other.ReadNumbers.ReadInt;
 
 public class WhileLoopsBasics {
     public static void main(String[] args) {

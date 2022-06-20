@@ -1,6 +1,6 @@
 package Classwork.DayOne;
 
-import static Other.Helper.ReadInt;
+import static Other.ReadNumbers.ReadInt;
 
 public class HurlingScore {
     public static void main(String[] args) {

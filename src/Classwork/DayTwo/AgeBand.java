@@ -1,6 +1,6 @@
 package Classwork.DayTwo;
 
-import static Other.Helper.ReadInt;
+import static Other.ReadNumbers.ReadInt;
 
 public class AgeBand {
     public static void main(String[] args) {

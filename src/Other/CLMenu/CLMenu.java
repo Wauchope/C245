@@ -2,7 +2,7 @@ package Other.CLMenu;
 
 import java.util.List;
 
-import static Other.Helper.ReadInt;
+import static Other.ReadNumbers.ReadInt;
 
 /**
  * A class for implementing a simple command line interface.
