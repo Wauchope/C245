@@ -1,5 +1,6 @@
 package Other.CLMenu;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static Other.ReadNumbers.ReadInt;
@@ -10,8 +11,9 @@ import static Other.ReadNumbers.ReadInt;
  * @author Jordan Luke Wauchope
  */
 public class CLMenu {
-    private List<CLMenuItem> menuItems;
-
+    private List<CLMenuItem> menuItems = new ArrayList<>();
+    private String startMessage = "Please select an option: ";
+    private String exitMessage = "Exit Program";
     /**
      * Create the CLMenu object.
      * The length of options and methods must be equal.
@@ -35,23 +37,27 @@ public class CLMenu {
             throw new IllegalArgumentException("Options and methods must be the same length.");
         }
 
-        AddNewOptions((String[]) options.toArray(),
-                (Runnable[]) methods.toArray());
+        AddNewOptions(options.toArray(new String[0]),
+                methods.toArray(new Runnable[0]));
     }
 
     /**
      * Starts the loop which runs the CLMenu. Takes control of the program.
      */
-    public void StartMenu()
+    public void StartMenu(boolean repeat)
     {
         int choice;
         do {
+            System.out.println(startMessage);
             //Display options
             for (int i = 0; i < menuItems.size(); i++) {
                 CLMenuItem menuItem = menuItems.get(i);
                 System.out.println((i + 1) + ": " + menuItem.getDescription());
             }
-            System.out.println((menuItems.size() + 1) + ": Exit program");
+
+            if (repeat) {
+                System.out.println((menuItems.size() + 1) + ": "+ exitMessage);
+            }
 
             //Get user input and ensure its in the correct range
             do {
@@ -66,9 +72,11 @@ public class CLMenu {
                         .run();
             }
         }
-        while(choice != menuItems.size()+1);
+        while(repeat && choice != menuItems.size()+1);
+    }
 
-        System.out.println("Thank you for running my program! Goodbye.");
+    public void StartMenu() {
+        StartMenu(true);
     }
 
 
@@ -142,6 +150,14 @@ public class CLMenu {
             CLMenuItem cLMenuItem = new CLMenuItem(descriptions[i], methods[i]);
             AddNewOption(cLMenuItem);
         }
+    }
+
+    public void setExitMessage(String exitMessage) {
+        this.exitMessage = exitMessage;
+    }
+
+    public void setStartMessage(String startMessage) {
+        this.startMessage = startMessage;
     }
 
     @Override
