@@ -1,6 +1,5 @@
-package Other;
+package Other.CLMenu;
 
-import java.util.Arrays;
 import java.util.List;
 
 import static Other.Helper.ReadInt;
@@ -11,8 +10,7 @@ import static Other.Helper.ReadInt;
  * @author Jordan Luke Wauchope
  */
 public class CLMenu {
-    private List<String> options;
-    private List<Runnable> methods;
+    private List<CLMenuItem> menuItems;
 
     /**
      * Create the CLMenu object.
@@ -27,8 +25,7 @@ public class CLMenu {
             throw new IllegalArgumentException("Options and methods must be the same length.");
         }
 
-        this.options = Arrays.stream(options).toList();
-        this.methods = Arrays.stream(methods).toList();
+        AddNewOptions(options, methods);
     }
 
     public CLMenu(List<String> options, List<Runnable> methods)
@@ -38,8 +35,8 @@ public class CLMenu {
             throw new IllegalArgumentException("Options and methods must be the same length.");
         }
 
-        this.options = options;
-        this.methods = methods;
+        AddNewOptions((String[]) options.toArray(),
+                (Runnable[]) methods.toArray());
     }
 
     /**
@@ -50,42 +47,33 @@ public class CLMenu {
         int choice;
         do {
             //Display options
-            for (int i = 0; i < options.size(); i++) {
-                System.out.println((i + 1) + ": " + options.get(i));
+            for (int i = 0; i < menuItems.size(); i++) {
+                CLMenuItem menuItem = menuItems.get(i);
+                System.out.println((i + 1) + ": " + menuItem.getDescription());
             }
-            System.out.println((options.size() + 1) + ": Exit program");
+            System.out.println((menuItems.size() + 1) + ": Exit program");
 
             //Get user input and ensure its in the correct range
             do {
-                choice = ReadInt("Please select an option: ", "Please enter a number between 1 and " + (options.size() + 1) + ":");
-            } while (choice < 1 || choice > options.size() + 1);
+                choice = ReadInt("Please select an option: ", "Please enter a number between 1 and " + (menuItems.size() + 1) + ":");
+            } while (choice < 1 || choice > menuItems.size() + 1);
 
             //As long as we're not trying to exit
-            if (choice != options.size() + 1) {
-
+            if (choice != menuItems.size() + 1) {
+                CLMenuItem menuItem = menuItems.get(choice-1);
                 //Run the relevant method
-                methods.get(choice-1).run();
+                menuItem.getMethod()
+                        .run();
             }
         }
-        while(choice != options.size()+1);
+        while(choice != menuItems.size()+1);
 
         System.out.println("Thank you for running my program! Goodbye.");
     }
 
-    /**
-     * Returns an array of strings containing all current options
-     * @return an array of strings containing all current options
-     */
-    public String[] getOptions() {
-        return (String[]) options.toArray();
-    }
 
-    /**
-     * Returns an array of Runnables containing all current options
-     * @return an array of Runnables containing all current options
-     */
-    public Runnable[] getMethods() {
-        return (Runnable[]) methods.toArray();
+    public List<CLMenuItem> getMenuItems() {
+        return menuItems;
     }
 
     /**
@@ -95,7 +83,8 @@ public class CLMenu {
      */
     public void setMethod(Runnable method, int index) {
         try {
-            methods.set(index, method);
+            CLMenuItem option = menuItems.get(index);
+            option.setMethod(method);
         }
         catch (IndexOutOfBoundsException e)
         {
@@ -106,12 +95,13 @@ public class CLMenu {
 
     /**
      * Allows you to relabel an option during runtime
-     * @param option The new label of the option
+     * @param description The new label of the option
      * @param index The index of the option you wish to alter.
      */
-    public void setOption(String option, int index) {
+    public void setOption(String description, int index) {
         try {
-            options.set(index, option);
+            CLMenuItem CLMenuItem = menuItems.get(index);
+            CLMenuItem.setDescription(description);
         }
         catch (IndexOutOfBoundsException e)
         {
@@ -122,33 +112,40 @@ public class CLMenu {
 
     /**
      * Allows you to add an option into the menu for placeholder reasons
-     * @param option A description of what the option does when ran
+     * @param description A description of what the option does when ran
      */
-    public void AddNewOption(String option)
+    public void AddNewOption(String description)
     {
-        AddNewOption(option, ()->{throw new UnsupportedOperationException();});
+        AddNewOption(description, ()->{throw new UnsupportedOperationException();});
     }
 
     /**
      * Allows you to add an option into the menu and designate its functionality
-     * @param option A description of what the option does when ran
+     * @param description A description of what the option does when ran
      * @param method The method to be run when this option is chosen. Called using method.run()
      */
-    public void AddNewOption(String option, Runnable method)
+    public void AddNewOption(String description, Runnable method)
     {
-        options.add(option);
-        methods.add(method);
+        CLMenuItem cLMenuItem = new CLMenuItem(description, method);
+        System.out.println("Adding new MenuItem in position: " + menuItems.size());
+        AddNewOption(cLMenuItem);
+    }
 
-        System.out.println("New option added in position: ");
+    public void AddNewOption(CLMenuItem cLMenuItem) {
+        menuItems.add(cLMenuItem);
+    }
 
-        assert options.size() == methods.size();
+    public void AddNewOptions(String[] descriptions, Runnable[] methods) {
+        assert descriptions.length == methods.length;
+
+        for (int i = 0; i < descriptions.length; i++) {
+            CLMenuItem cLMenuItem = new CLMenuItem(descriptions[i], methods[i]);
+            AddNewOption(cLMenuItem);
+        }
     }
 
     @Override
     public String toString() {
-        return "CLMenu{" +
-                "options=" + options +
-                ", methods=" + methods +
-                '}';
+        return "CLMenu: A menu with " + menuItems.size() + " elements";
     }
 }
