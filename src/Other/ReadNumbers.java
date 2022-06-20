@@ -1,5 +1,6 @@
 package Other;
 
+import java.math.BigDecimal;
 import java.util.Scanner;
 
 public class ReadNumbers {
@@ -13,6 +14,55 @@ public class ReadNumbers {
         if (in != null) return;
 
         in = new Scanner(System.in);
+    }
+
+    public static double ReadDouble(String prompt, String errorMessage) {
+        //If the scanner hasn't been initialized (first time running a read method in this class), create it
+        CreateScannerIfNull();
+
+        boolean valid = false;
+        double output = 0;
+        String userInput;
+
+        //Do while loop so that the code runs once before checking if valid is true
+        //Removes repetitive code
+        do {
+            try {
+                //Display the prompt to the user
+                System.out.println(prompt);
+                //Wait for them to input something to the CLI
+                userInput = in.next();
+
+                //Attempt to parse input as a double
+                output = Double.parseDouble(userInput);
+                //Set valid to true (exit caluse)
+                valid = true;
+            } catch (Exception e) { //Perhaps separate into different exceptions, but eh it works
+                //If this doesn't work for any reason, display the error message
+                System.out.println(errorMessage);
+            }
+        } while (!valid);
+        return output;
+    }
+
+    public static double ReadDouble(String prompt) {
+        return ReadDouble(prompt, "Error: Input was not valid.");
+    }
+
+    public static double ReadDouble() {
+        return ReadDouble("Please enter a number: ");
+    }
+
+    public static BigDecimal ReadNumber(String prompt, String errorMessage) {
+        return BigDecimal.valueOf(ReadDouble(prompt, errorMessage));
+    }
+
+    public static BigDecimal ReadNumber(String prompt) {
+        return BigDecimal.valueOf(ReadDouble(prompt, "Error: Input was not valid."));
+    }
+
+    public static BigDecimal ReadNumber() {
+        return BigDecimal.valueOf(ReadDouble("Please enter a number: "));
     }
 
     /**
