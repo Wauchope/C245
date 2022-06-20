@@ -8,6 +8,6 @@ public class DiamondProblemObject implements Right, Left{
      */
     @Override
     public void AbstractDoThing() {
-
+        System.out.println("This method does something!");
     }
 }
