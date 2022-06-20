@@ -1,4 +1,4 @@
-package DayTwo;
+package Classwork.DayTwo;
 
 import java.util.Locale;
 import java.util.Scanner;

@@ -1,4 +1,4 @@
-package DayThree;
+package Classwork.DayThree;
 
 import java.util.Scanner;
 
