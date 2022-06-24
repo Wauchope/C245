@@ -9,5 +9,8 @@
         <module name="C245" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="C245" target="17" />
+    </bytecodeTargetLevel>
   </component>
 </project>
